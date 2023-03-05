@@ -4,7 +4,7 @@ import { galleryItems } from './gallery-items.js';
 const galleryContainer = document.querySelector('.gallery');
 const createElem = createCards(galleryItems);
 
-galleryContainer.insertAdjacentHTML('beforeend', createElem);
+// galleryContainer.insertAdjacentHTML('beforeend', createElem);
 
 function createCards() {
     return galleryItems.map(({ original, preview, description }) => {
@@ -22,10 +22,10 @@ function createCards() {
 
 galleryContainer.innerHTML = createElem;
 
-galleryContainer.addEventListener('click', clickOnLink);
+// galleryContainer.addEventListener('click', clickOnLink);
 
-function clickOnLink(event) {
-    event.preventDefault();
-    const lightbox = new SimpleLightbox('.gallery a', `
-    <img width = "1400" height = "900" src = "${event.target.dataset.source}">`)
-}
+const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+    enableKeyboard: "Escape",
+});
